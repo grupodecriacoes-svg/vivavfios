@@ -348,10 +348,10 @@ footer a:not(.btn):hover{border-color:var(--cu2)}
 <script>
 // CONFIGURE AQUI: preços e links de checkout de cada tratamento
 var PLANS=[
- {m:3,  frascos:3,  price:null, link:"#", tag:"",                   sub:"Ciclo inicial"},
- {m:5,  frascos:5,  price:null, link:"#", tag:"Mais escolhido",      sub:"Ciclo de constância"},
- {m:9,  frascos:9,  price:null, link:"#", tag:"",                   sub:"Ciclo de transformação"},
- {m:12, frascos:12, price:null, link:"#", tag:"Melhor custo por mês", sub:"Ciclo completo"}
+ {m:3,  frascos:3,  price:297, link:"https://seguro.payt.com.br/a/nyoJV0KEiOOMKoOm", tag:"",                   sub:"Ciclo inicial"},
+ {m:5,  frascos:5,  price:396, link:"https://seguro.payt.com.br/a/O2Wk15kbuDDpQolp", tag:"Mais escolhido",      sub:"Ciclo de constância"},
+ {m:9,  frascos:9,  price:696, link:"https://seguro.payt.com.br/a/q3eAa03MCddlYeBX", tag:"",                   sub:"Ciclo de transformação"},
+ {m:12, frascos:12, price:797, link:"https://seguro.payt.com.br/a/5Jedbq5ZUjjkwvQD", tag:"Melhor custo por mês", sub:"Ciclo completo"}
 ];
 // CONFIGURE AQUI com dados REAIS: kits restantes por tratamento (null = não mostrar) e data/hora final da oferta (null = sem contagem)
 var STOCK={3:null,5:14,9:8,12:6};
@@ -365,11 +365,11 @@ function stack(m){var src=document.querySelector(".fb").src,k=0,w=BW[m];
   return '<div class="srow" style="z-index:'+ri+';--b:'+(1-back*.14)+'">'+Array(n+1).join('x').split('').map(function(){return '<img src="'+src+'" alt="" style="--i:'+(k++)+'">'}).join('')+'</div>'}).join('')+'<span class="sbadge">'+m+' frascos</span></div>'}
 document.getElementById("cards").innerHTML=PLANS.map(function(p){
  var top=p.tag==="Mais escolhido";
- var pr=p.price?'<small>ou '+brl(p.price/p.m)+' por mês</small><b>'+brl(p.price)+'</b>':'<small>Valor</small><b>Em breve</b>';
+ var pr=p.price?'<small>equivale a '+brl(p.price/p.m)+' por mês</small><b>'+brl(p.price)+'</b>':'<small>Valor</small><b>Em breve</b>';
  return '<article class="card'+(top?' top':'')+'">'+(p.tag?'<span class="badge">'+p.tag+'</span>':'')+
  stack(p.m)+'<h3>'+p.m+' meses</h3><div class="sub">'+p.sub+'</div>'+
  '<ul><li>'+p.frascos+' frascos com 30 cápsulas</li><li>'+(p.m*30)+' dias de tratamento</li><li>1 cápsula por dia</li><li>Envio para todo o Brasil</li></ul>'+
- (STOCK[p.m]?'<div class="stock">Restam apenas '+STOCK[p.m]+' kits<i style="--w:'+Math.min(100,STOCK[p.m]*4)+'%"></i></div>':'')+'<div class="price">'+pr+'</div><a class="btn" href="'+p.link+'">Quero '+p.m+' meses</a></article>';
+ (STOCK[p.m]?'<div class="stock">Restam apenas '+STOCK[p.m]+' kits<i style="--w:'+Math.min(100,STOCK[p.m]*4)+'%"></i></div>':'')+'<div class="price">'+pr+'</div><a class="btn" target="_blank" rel="noopener noreferrer" href="'+p.link+'">Quero '+p.m+' meses</a></article>';
 }).join("");
 </script>
 <div class="sale" id="sale" role="status" aria-live="polite"><img id="saleImg" alt=""><p id="saleTxt"></p><button id="saleX" aria-label="Fechar">×</button></div>
