@@ -258,6 +258,32 @@ footer{padding:44px 0 36px}
 footer a:not(.btn){color:var(--cu2);text-decoration:none;border-bottom:1px solid #d9a58f55}
 footer a:not(.btn):hover{border-color:var(--cu2)}
 .sac{line-height:1.8;color:#c9b3c8}.sac b{font:600 20px/1 var(--serif);color:var(--cu2);letter-spacing:.02em}
+.seal{display:grid;place-items:center;align-content:center;gap:2px;width:118px;height:118px;border-radius:50%;text-align:center;color:#2a0b33;background:radial-gradient(circle at 30% 25%,#f8dccb,#d39a84 60%,#b87762);box-shadow:0 14px 30px -8px #000a;position:relative;flex:none;transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.seal::before{content:"";position:absolute;inset:6px;border-radius:50%;border:1.5px dashed #2a0b3388}
+.seal b{display:block;font:600 46px/.85 var(--serif)}
+.seal span{display:block;font:700 10px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase}
+.seal.mini{width:64px;height:64px;gap:0}.seal.mini::before{inset:4px;border-width:1px}.seal.mini b{font-size:25px}.seal.mini span{font-size:6px;letter-spacing:.1em}
+.seal:hover{transform:rotate(-6deg) scale(1.08)}
+.cwrap .seal.hero{position:absolute;left:-7%;bottom:9%;z-index:7;transform:rotate(-10deg)}
+.cwrap .seal.hero:hover{transform:rotate(-2deg) scale(1.08)}
+.card .stack .seal.mini{position:absolute;top:0;right:-4px;z-index:40;transform:rotate(9deg)}
+.guar{display:flex;gap:30px;align-items:center;max-width:780px;margin:46px auto 0;padding:28px 34px;border:1px solid #d9a58f55;background:linear-gradient(100deg,#2a0b3399,#4a145966);border-radius:3px}
+.guar h3{font-size:32px;color:var(--cu2);margin:0 0 6px}.guar p{margin:0;color:var(--mute);font-size:16px}
+.gar{display:flex;gap:14px;align-items:center;margin:0 0 14px}.gar span{font-size:14px;color:#c9b3c8}
+.mbar small{display:block;text-align:center;color:var(--cu2);font-size:12px;margin-top:6px;letter-spacing:.04em}
+@media(max-width:700px){.guar{flex-direction:column;text-align:center;padding:26px 20px}.cwrap .seal.hero{width:92px;height:92px;left:-2%}.cwrap .seal.hero b{font-size:36px}.cwrap .seal.hero span{font-size:8.5px}}
+@media(prefers-reduced-motion:no-preference){.cwrap .seal.hero{animation:sw 5s ease-in-out infinite}@keyframes sw{0%,100%{rotate:0deg}50%{rotate:5deg}}}
+.seal{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:0}
+.seal b{font-variant-numeric:lining-nums;font-feature-settings:"lnum" 1;line-height:1;margin:0 0 7px;padding-top:2px}
+.seal span{margin:0;line-height:1.25}
+.seal.mini b{margin-bottom:4px;padding-top:0}
+.seal.mini span{font-size:6.5px}
+.gar>span{font-size:14px;color:#c9b3c8}
+.gar span.x{display:none}
+.cwrap .seal.hero{transform:rotate(-4deg)}
+.card .stack .seal.mini{transform:none;right:0}
+.gar .seal span{font-size:6px;color:#2a0b33}
+@media(max-width:700px){.cwrap .seal.hero b{margin-bottom:5px}}
 </style>
 </head>
 <body>
@@ -348,10 +374,10 @@ footer a:not(.btn):hover{border-color:var(--cu2)}
 <script>
 // CONFIGURE AQUI: preços e links de checkout de cada tratamento
 var PLANS=[
- {m:3,  frascos:3,  price:297, link:"https://ev.braip.com/checkout/play861k/chejxdmv", tag:"",                   sub:"Ciclo inicial"},
- {m:5,  frascos:5,  price:396, link:"https://ev.braip.com/checkout/plarvrp8/chejxdmv", tag:"Mais escolhido",      sub:"Ciclo de constância"},
- {m:9,  frascos:9,  price:696, link:"https://ev.braip.com/checkout/plakjd2x/chejxdmv?currency=BRL", tag:"",                   sub:"Ciclo de transformação"},
- {m:12, frascos:12, price:797, link:"https://ev.braip.com/checkout/plaze6dj/chejxdmv", tag:"Melhor custo por mês", sub:"Ciclo completo"}
+ {m:3,  frascos:3,  price:297, link:"https://seguro.payt.com.br/a/nyoJV0KEiOOMKoOm", tag:"",                   sub:"Ciclo inicial"},
+ {m:5,  frascos:5,  price:396, link:"https://seguro.payt.com.br/a/O2Wk15kbuDDpQolp", tag:"Mais escolhido",      sub:"Ciclo de constância"},
+ {m:9,  frascos:9,  price:696, link:"https://seguro.payt.com.br/a/q3eAa03MCddlYeBX", tag:"",                   sub:"Ciclo de transformação"},
+ {m:12, frascos:12, price:797, link:"https://seguro.payt.com.br/a/5Jedbq5ZUjjkwvQD", tag:"Melhor custo por mês", sub:"Ciclo completo"}
 ];
 // CONFIGURE AQUI com dados REAIS: kits restantes por tratamento (null = não mostrar) e data/hora final da oferta (null = sem contagem)
 var STOCK={3:null,5:14,9:8,12:6};
@@ -462,6 +488,20 @@ var I=["M12 3c3 4 5 7 5 10a5 5 0 0 1-10 0c0-3 2-6 5-10zM12 11v6", "M12 3l7 3v5c0
 document.querySelectorAll(".fgrid>div").forEach(function(d,i){
  var b=d.querySelector("b");if(b&&I[i]){b.insertAdjacentHTML("afterbegin",'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="'+I[i]+'"/></svg>')}
  d.style.setProperty("--d",Math.min(i*0.06,0.7)+"s")});
+})();
+</script>
+<script>
+(function(){
+var S=function(c){return '<div class="seal'+(c?' '+c:'')+'" role="img" aria-label="30 dias de garantia"><b>30</b><span>dias de<br>garantia</span></div>'};
+var cw=document.querySelector(".cwrap");if(cw)cw.insertAdjacentHTML("beforeend",S("hero"));
+document.querySelectorAll(".card .stack").forEach(function(s){s.insertAdjacentHTML("beforeend",S("mini"))});
+var t=document.querySelector(".trust");
+if(t)t.insertAdjacentHTML("beforebegin",'<div class="guar">'+S()+'<div><h3>30 dias de garantia</h3><p>Compre com tranquilidade. Se tiver qualquer dúvida durante esse período, nosso SAC está pronto para te atender.</p></div></div>');
+var f=document.querySelector("#duvidas .wrap");
+if(f)f.insertAdjacentHTML("beforeend",'<details><summary>Como funciona a garantia de 30 dias?</summary><p>Todos os tratamentos têm 30 dias de garantia. Para acionar, fale com o nosso SAC pelo e-mail sac.vivafios@gmail.com ou pelo telefone (11) 91189-8639.</p></details>');
+var sc=document.querySelector(".sac");
+if(sc)sc.insertAdjacentHTML("beforebegin",'<div class="gar">'+S("mini")+'<span>30 dias de garantia em todos os tratamentos.</span></div>');
+var mb=document.querySelector(".mbar");if(mb)mb.insertAdjacentHTML("beforeend","<small>30 dias de garantia</small>");
 })();
 </script>
 </body>
